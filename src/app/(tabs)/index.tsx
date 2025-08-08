@@ -1,6 +1,15 @@
+import { products } from "@/assets/data/Products";
+import ProductsList from "@/src/components/ProductsList";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React, { useState } from "react";
-import { Dimensions, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Dimensions,
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import Carousel from "react-native-reanimated-carousel";
 
 const index = () => {
@@ -29,33 +38,49 @@ const index = () => {
           style={styles.cameraIcon}
         />
       </View>
-      {/* Carousel and card container */}
-      <View style={styles.offerContainer}>
-        <Carousel
-          loop
-          width={width}
-          height={180}
-          autoPlay
-          data={data}
-          scrollAnimationDuration={1500}
-          onSnapToItem={(index) => setCurrentIndex(index)}
-          renderItem={({ item }) => (
-            <View style={[styles.card, { backgroundColor: item.color }]}>
-              <Text style={styles.title}>{item.title}</Text>
-            </View>
-          )}
-        />
-      </View>
 
-      {/* Pagination Dots should be outside carousel box */}
-      <View style={styles.pagination}>
-        {data.map((_, index) => (
-          <View
-            key={index}
-            style={[styles.dot, currentIndex === index && styles.activeDot]}
-          />
-        ))}
-      </View>
+      {/* Products Section */}
+      <FlatList
+        ListHeaderComponent={() => (
+          <>
+            <View style={styles.offerContainer}>
+              <Carousel
+                loop
+                width={width}
+                height={180}
+                autoPlay
+                data={data}
+                scrollAnimationDuration={1500}
+                onSnapToItem={(index) => setCurrentIndex(index)}
+                renderItem={({ item }) => (
+                  <View style={[styles.card, { backgroundColor: item.color }]}>
+                    <Text style={styles.title}>{item.title}</Text>
+                  </View>
+                )}
+              />
+            </View>
+            <View style={styles.pagination}>
+              {data.map((_, index) => (
+                <View
+                  key={index}
+                  style={[
+                    styles.dot,
+                    currentIndex === index && styles.activeDot,
+                  ]}
+                />
+              ))}
+            </View>
+          </>
+        )}
+        numColumns={2}
+        contentContainerStyle={{ gap: 10, paddingBottom: 20 }}
+        columnWrapperStyle={{ gap: 10 }}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        data={products}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => <ProductsList item={item} />}
+      />
     </View>
   );
 };
@@ -65,7 +90,7 @@ export default index;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
+    // paddingTop: 10,
     paddingHorizontal: 16,
     backgroundColor: "#fff",
   },
@@ -75,6 +100,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 14,
+    marginBottom: 20,
   },
   icon: {
     position: "absolute",
@@ -87,7 +113,7 @@ const styles = StyleSheet.create({
     right: 12,
   },
   offerContainer: {
-    marginTop: 30,
+    marginTop: 10,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "#e0e0e0",
@@ -114,7 +140,7 @@ const styles = StyleSheet.create({
   pagination: {
     flexDirection: "row",
     justifyContent: "center",
-    marginTop: 10,
+    marginVertical: 12,
   },
   dot: {
     width: 6,
