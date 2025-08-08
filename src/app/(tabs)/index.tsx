@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import {
   Dimensions,
   FlatList,
+  Image,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -12,19 +14,30 @@ import {
 } from "react-native";
 import Carousel from "react-native-reanimated-carousel";
 
-const index = () => {
+const HomeScreen = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const data = [
-    { title: "Category 1", color: "#14CF93" },
-    { title: "Category 2", color: "#FFB703" },
-    { title: "Category 3", color: "#FB5607" },
-    { title: "Category 4", color: "#0bd3e9" },
+    { image: require("../../../assets/images/banner5.jpg") },
+    { image: require("../../../assets/images/banner4.jpg") },
+    { image: require("../../../assets/images/banner2.jpg") },
+    { image: require("../../../assets/images/banner3.jpg") },
+    { image: require("../../../assets/images/banner1.jpg") },
+  ];
+
+  const categories = [
+    "All",
+    "Clothing",
+    "Electronics",
+    "Fashion",
+    "Shoes",
+    "Accessories",
   ];
   const { width } = Dimensions.get("window");
 
   return (
     <View style={styles.container}>
-      <View>
+      <View style={styles.searchContainer}>
         <Ionicons name="search" size={20} color="#8f8d8d" style={styles.icon} />
         <TextInput
           placeholder="Search..."
@@ -39,6 +52,16 @@ const index = () => {
         />
       </View>
 
+      <ScrollView horizontal style={styles.categories}>
+        <View style={styles.categoriesContainer}>
+          {categories.map((category, index) => (
+            <View key={index} style={styles.categoryItem}>
+              <Text style={styles.categoryText}>{category}</Text>
+            </View>
+          ))}
+        </View>
+      </ScrollView>
+
       {/* Carousel and card container */}
       <View style={styles.offerContainer}>
         <Carousel
@@ -47,11 +70,15 @@ const index = () => {
           height={180}
           autoPlay
           data={data}
-          scrollAnimationDuration={1500}
+          scrollAnimationDuration={2500}
           onSnapToItem={(index) => setCurrentIndex(index)}
           renderItem={({ item }) => (
-            <View style={[styles.card, { backgroundColor: item.color }]}>
-              <Text style={styles.title}>{item.title}</Text>
+            <View style={[styles.card]}>
+              <Image
+                source={item.image}
+                style={styles.image}
+                resizeMode="cover"
+              />
             </View>
           )}
         />
@@ -79,7 +106,7 @@ const index = () => {
     </View>
   );
 };
-export default index;
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -87,6 +114,10 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingHorizontal: 16,
     backgroundColor: "#fff",
+  },
+  searchContainer: {
+    marginBottom: 16,
+    // backgroundColor: "#d66b6b",
   },
   searchInput: {
     padding: 12,
@@ -106,7 +137,7 @@ const styles = StyleSheet.create({
     right: 12,
   },
   offerContainer: {
-    marginTop: 30,
+    // marginTop: 30,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: "#e0e0e0",
@@ -116,14 +147,12 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%",
-    // borderRadius: 10,
+    resizeMode: "cover",
   },
   card: {
     flex: 1,
-    // borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",
-    // marginHorizontal: 10,
   },
   title: {
     fontSize: 22,
@@ -144,5 +173,30 @@ const styles = StyleSheet.create({
   },
   activeDot: {
     backgroundColor: "#1b1c1c",
+  },
+
+  categoriesContainer: {
+    marginBottom: 16,
+    flexDirection: "row",
+    paddingVertical: 5,
+    gap: 16,
+  },
+
+  categoryItem: {
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#e0e0e0",
+    borderRadius: 20,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+  },
+
+  categoryText: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#000000", // darker so it's visible
+  },
+  categories: {
+    height: 130,
   },
 });
