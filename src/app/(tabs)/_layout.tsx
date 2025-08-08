@@ -37,7 +37,7 @@ const _layout = () => {
           },
           headerTintColor: "#000",
           headerTitleStyle: {
-            fontSize: 20,
+            fontSize: 22,
             fontWeight: 900,
           },
           tabBarIcon: ({ color }) => {
