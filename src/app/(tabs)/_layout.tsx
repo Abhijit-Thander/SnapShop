@@ -8,14 +8,19 @@ const _layout = () => {
   return (
     <Tabs
       screenOptions={{
-        // headerShown: false,
         tabBarActiveTintColor: "#000",
         tabBarInactiveTintColor: "#888",
         tabBarShowLabel: false,
         tabBarStyle: {
           height: 60,
         },
-        tabBarItemStyle: {},
+        headerTitleStyle: {
+          fontSize: 22,
+          fontWeight: 900,
+        },
+        headerStyle: {
+          shadowColor: "transparent",
+        },
       }}
     >
       <Tabs.Screen
@@ -32,14 +37,9 @@ const _layout = () => {
               />
             );
           },
-          headerStyle: {
-            shadowColor: "transparent",
-          },
+
           headerTintColor: "#000",
-          headerTitleStyle: {
-            fontSize: 22,
-            fontWeight: 900,
-          },
+
           tabBarIcon: ({ color }) => {
             return <AntDesign name="home" size={24} color={color} />;
           },
@@ -77,7 +77,7 @@ const _layout = () => {
       <Tabs.Screen
         name="profile"
         options={{
-          title: "Profile",
+          title: "My Account",
           tabBarIcon: ({ color }) => {
             return <FontAwesome name="user-o" size={24} color={color} />;
           },

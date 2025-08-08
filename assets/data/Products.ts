@@ -4,6 +4,7 @@ export const products = [
     name: "Men's Casual T-Shirt",
     price: 499,
     category: "Clothing",
+    rating: 4.2,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoP4BuUfqxGPLNufveE-Y2ukDDZMfBDOx4PA&s",
   },
@@ -12,6 +13,7 @@ export const products = [
     name: "Women's Summer Dress",
     price: 899,
     category: "Clothing",
+    rating: 4.5,
     image:
       "https://plus.unsplash.com/premium_photo-1664871747922-a6266730ed0c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d29tZW5zJTIwc3VtbWVyJTIwZHJlc3N8ZW58MHx8MHx8fDA%3D",
   },
@@ -20,6 +22,7 @@ export const products = [
     name: "Wireless Bluetooth Earbuds",
     price: 1499,
     category: "Electronics",
+    rating: 4.6,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0AZRfsMoMl9n-Dr8NppzAQaOm7PztNc3A_w&s",
   },
@@ -28,6 +31,7 @@ export const products = [
     name: "Apple iPhone 14 Pro",
     price: 129999,
     category: "Electronics",
+    rating: 4.9,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPhiQ46UjfpMojyioFnBWTGhW5tZWVcS1d_A&s",
   },
@@ -36,6 +40,7 @@ export const products = [
     name: "Running Shoes",
     price: 1999,
     category: "Footwear",
+    rating: 4.4,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkm9228mBzjWqNp0QLn2uxWCPZf3P9Ij6JjA&s",
   },
@@ -44,6 +49,7 @@ export const products = [
     name: "Leather Wallet",
     price: 799,
     category: "Accessories",
+    rating: 4.1,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlV2gVjYfpOoM2kgeJeU6NQfz1g_TXhpLC9Q&s",
   },
@@ -52,6 +58,7 @@ export const products = [
     name: "Digital Smartwatch",
     price: 2999,
     category: "Electronics",
+    rating: 4.3,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNOMPVDxFGCUwGuovwgEWcR2zu9WCBqghGgw&s",
   },
@@ -60,6 +67,7 @@ export const products = [
     name: "Men's Formal Shirt",
     price: 699,
     category: "Clothing",
+    rating: 4.1,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEDXROTA7nu-eTjCg1T67AGfNY29XHd-Lf_Q&s",
   },
@@ -68,6 +76,7 @@ export const products = [
     name: "Women's Handbag",
     price: 1499,
     category: "Accessories",
+    rating: 4.5,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5f9C3oixxmQ54xz9BPMv2n56r27pbdSUIoA&s",
   },
@@ -76,6 +85,7 @@ export const products = [
     name: "Wireless Keyboard & Mouse Combo",
     price: 1999,
     category: "Electronics",
+    rating: 4.2,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUfyYXnkxgudYT4uxqh6sk1HbpEdk2Ec37Tw&s",
   },
@@ -84,6 +94,7 @@ export const products = [
     name: "Men's Sports Jacket",
     price: 2499,
     category: "Clothing",
+    rating: 4.6,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL54YrGnrTngnxGSLRrOeTnlYMeIHICfN1Tg&s",
   },
@@ -92,6 +103,7 @@ export const products = [
     name: "Women's Sunglasses",
     price: 999,
     category: "Accessories",
+    rating: 4.3,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTATketvEhOt8mcyU_mTFcKBrlwI5sRLrGCQg&s",
   },
@@ -100,6 +112,7 @@ export const products = [
     name: "Bluetooth Speaker",
     price: 1299,
     category: "Electronics",
+    rating: 4.4,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRar-Rl2Ql2xYbIigCN4hilpfZdlrS0Hen3Ug&s",
   },
@@ -108,6 +121,7 @@ export const products = [
     name: "Men's Denim Jeans",
     price: 1199,
     category: "Clothing",
+    rating: 4.1,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA3STLI6pb5tlY0AKh8aS69yIpfknC5Oj9xg&s",
   },
@@ -116,6 +130,7 @@ export const products = [
     name: "Backpack",
     price: 1499,
     category: "Accessories",
+    rating: 4.3,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWem7liPsfJ7KNKgPt_yYgVuhJr_IJ_xNNaw&s",
   },
@@ -124,6 +139,7 @@ export const products = [
     name: "Gaming Mouse",
     price: 899,
     category: "Electronics",
+    rating: 4.2,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJMNgSn8sXs1VDbubNq7VU28B5KYvK-RgdgQ&s",
   },
@@ -132,6 +148,7 @@ export const products = [
     name: "Men's Hoodie",
     price: 1399,
     category: "Clothing",
+    rating: 4.5,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQateXKHad6B2J5TmjX_LfUELQibcxld2mVNg&s",
   },
@@ -140,6 +157,7 @@ export const products = [
     name: "Women's Heels",
     price: 1799,
     category: "Footwear",
+    rating: 4.1,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmOHmuSwEfsjP3r7DWPJf8O5mMEGlNLLRs9g&s",
   },
@@ -148,6 +166,7 @@ export const products = [
     name: "Laptop Stand",
     price: 1299,
     category: "Electronics",
+    rating: 4.4,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFBkHxBfeNhic3rJZ3rXRO4uvV4QeDe3mNvA&s",
   },
@@ -156,6 +175,7 @@ export const products = [
     name: "Perfume",
     price: 599,
     category: "Accessories",
+    rating: 4.1,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXFy9V2_3SIB8DfJjvgbbcJTtE-zd7rSr9aw&s",
   },
