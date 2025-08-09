@@ -1,43 +1,53 @@
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { Link } from "expo-router";
 import React, { memo, useState } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-const ProductsList = memo(({ item }: any) => {
+const ProductsList = memo(({ product }: any) => {
   const [liked, setLiked] = useState(false);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.imageWrapper}>
-        <Image
-          source={{ uri: item.image }}
-          style={styles.image}
-          resizeMode="cover"
-        />
-        <TouchableOpacity
-          onPress={() => setLiked(!liked)}
-          style={styles.heartButton}
-        >
-          <AntDesign
-            name={liked ? "heart" : "hearto"}
-            size={20}
-            color={liked ? "red" : "#949191"}
+    <Link href={`/(tabs)/(home)/${product.id}`} asChild>
+      <Pressable style={styles.container}>
+        <View style={styles.imageWrapper}>
+          <Image
+            source={{ uri: product.image }}
+            style={styles.image}
+            resizeMode="cover"
           />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.details}>
-        <Text style={styles.name} numberOfLines={1}>
-          {item.name}
-        </Text>
+          <TouchableOpacity
+            onPress={() => setLiked(!liked)}
+            style={styles.heartButton}
+          >
+            <AntDesign
+              name={liked ? "heart" : "hearto"}
+              size={20}
+              color={liked ? "red" : "#949191"}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.details}>
+          <Text style={styles.name} numberOfLines={1}>
+            {product.name}
+          </Text>
 
-        <View style={styles.priceContainer}>
-          <Text style={styles.price}>₹{item.price}</Text>
-          <View style={styles.rating}>
-            <AntDesign name="star" size={12} color="black" />
-            <Text style={styles.ratingText}>{item.rating}</Text>
+          <View style={styles.priceContainer}>
+            <Text style={styles.price}>₹{product.price}</Text>
+            <View style={styles.rating}>
+              <AntDesign name="star" size={12} color="black" />
+              <Text style={styles.ratingText}>{product.rating}</Text>
+            </View>
           </View>
         </View>
-      </View>
-    </View>
+      </Pressable>
+    </Link>
   );
 });
 

@@ -24,21 +24,9 @@ const _layout = () => {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="(home)"
         options={{
-          title: "SnapShop",
-          headerRight: ({ tintColor }) => {
-            return (
-              <SimpleLineIcons
-                name="handbag"
-                size={22}
-                color={tintColor}
-                style={{ marginRight: 16 }}
-              />
-            );
-          },
-
-          headerTintColor: "#000",
+          headerShown: false,
 
           tabBarIcon: ({ color }) => {
             return <AntDesign name="home" size={24} color={color} />;
@@ -68,6 +56,7 @@ const _layout = () => {
         name="cart"
         options={{
           title: "Cart",
+
           tabBarIcon: ({ color }) => {
             return <SimpleLineIcons name="handbag" size={24} color={color} />;
           },
