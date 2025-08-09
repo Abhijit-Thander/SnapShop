@@ -14,7 +14,7 @@ const _layout = () => {
       }}
     >
       <Stack.Screen name="signin" options={{ title: "Sign In" }} />
-      <Stack.Screen name="signup" />
+      <Stack.Screen name="signup" options={{ title: "Create  Account" }} />
     </Stack>
   );
 };
