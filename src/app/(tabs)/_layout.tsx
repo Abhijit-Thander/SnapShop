@@ -45,7 +45,7 @@ const _layout = () => {
       <Tabs.Screen
         name="favourite"
         options={{
-          title: "Favourites",
+          title: "Wishlist",
           tabBarIcon: ({ color }) => {
             return <AntDesign name="hearto" size={23} color={color} />;
           },
