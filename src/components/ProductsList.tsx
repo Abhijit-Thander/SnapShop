@@ -22,7 +22,7 @@ const ProductsList = memo(({ product }: any) => {
             style={styles.image}
             resizeMode="cover"
           />
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => setLiked(!liked)}
             style={styles.heartButton}
           >
@@ -31,7 +31,7 @@ const ProductsList = memo(({ product }: any) => {
               size={20}
               color={liked ? "red" : "#949191"}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View style={styles.details}>
           <Text style={styles.name} numberOfLines={1}>

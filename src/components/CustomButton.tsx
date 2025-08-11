@@ -1,7 +1,6 @@
 // components/CustomButton.tsx
 import React from "react";
 import {
-  GestureResponderEvent,
   StyleProp,
   StyleSheet,
   Text,
@@ -12,7 +11,7 @@ import {
 
 type CustomButtonProps = {
   title: string;
-  onPress?: (event: GestureResponderEvent) => void;
+  onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
 };
