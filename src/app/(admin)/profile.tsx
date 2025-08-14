@@ -7,6 +7,7 @@ const profile = () => {
       <View style={styles.generalView}>
         <Text style={styles.title}>General</Text>
       </View>
+
       <View>
         <Text style={styles.title}>Settings</Text>
       </View>

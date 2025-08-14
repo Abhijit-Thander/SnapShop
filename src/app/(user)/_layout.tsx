@@ -6,7 +6,7 @@ import { Redirect, Tabs } from "expo-router";
 import React from "react";
 
 const _layout = () => {
-  const { session } = useAuth();
+  const { session, isAdmin } = useAuth();
   if (!session) {
     return <Redirect href={"/" as any} />;
   }

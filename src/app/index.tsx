@@ -1,92 +1,3 @@
-// import { Link, Redirect } from "expo-router";
-// import {
-//   ActivityIndicator,
-//   Pressable,
-//   StyleSheet,
-//   Text,
-//   View,
-// } from "react-native";
-// import { useAuth } from "../providers/AuthProvider";
-
-// const Index = () => {
-//   const { session, loading } = useAuth();
-
-//   if (loading) {
-//     return (
-//       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-//         <ActivityIndicator size={"large"} />
-//       </View>
-//     );
-//   }
-
-//   if (!session) {
-//     return <Redirect href={"/(auth)/signin"} />;
-//   }
-
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.text}>Choose Your Type</Text>
-
-//       <Link href="/(admin)" asChild>
-//         <Pressable style={styles.btn} onPress={() => {}}>
-//           <Text style={styles.adminTxt}>Go To Admin</Text>
-//         </Pressable>
-//       </Link>
-
-//       <Text>Or</Text>
-
-//       <Link href={"/(user)/(home)"} asChild>
-//         <Pressable style={styles.btn} onPress={() => {}}>
-//           <Text style={styles.adminTxt}>Go To User</Text>
-//         </Pressable>
-//       </Link>
-
-//       <Pressable
-//         onPress={() => {
-//           console.log("logout");
-//         }}
-//         style={styles.logOutBtn}
-//       >
-//         <Text style={styles.adminTxt}>Logout</Text>
-//       </Pressable>
-//     </View>
-//   );
-// };
-
-// export default Index;
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: "center",
-//     justifyContent: "center",
-//     backgroundColor: "#fff",
-//   },
-//   text: {
-//     fontSize: 20,
-//     marginBottom: 20,
-//     fontWeight: "bold",
-//   },
-//   btn: {
-//     padding: 12,
-//     borderRadius: 8,
-//     backgroundColor: "#000",
-//     marginVertical: 10,
-//   },
-//   adminTxt: {
-//     color: "#fff",
-//     fontSize: 16,
-//     fontWeight: "bold",
-//   },
-//   logOutBtn: {
-//     paddingVertical: 10,
-//     paddingHorizontal: 20,
-//     borderRadius: 8,
-//     marginTop: 20,
-//     backgroundColor: "#e83939ff",
-//   },
-// });
-
 import { LinearGradient } from "expo-linear-gradient";
 import { Link, Redirect } from "expo-router";
 import React, { useRef } from "react";
@@ -148,7 +59,7 @@ const ScaleButton: React.FC<ScaleButtonProps> = ({
 };
 
 const Index: React.FC = () => {
-  const { session, loading } = useAuth(); // make sure `useAuth` returns { session: Session|null, loading: boolean }
+  const { session, loading, isAdmin } = useAuth(); // make sure `useAuth` returns { session: Session|null, loading: boolean }
 
   if (loading) {
     return (
@@ -162,9 +73,12 @@ const Index: React.FC = () => {
   }
 
   if (!session) {
-    return <Redirect href={"/(auth)/signin" as any} />;
+    return <Redirect href={"/signin" as any} />;
   }
 
+  if (!isAdmin) {
+    return <Redirect href={"/(user)" as any} />;
+  }
   return (
     <LinearGradient
       colors={["#cf14c9", "#3ea6e3"]}

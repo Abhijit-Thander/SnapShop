@@ -21,11 +21,14 @@ export default function SignUpScreen() {
   const [loading, setLoading] = useState(false);
 
   async function signUpWIthEmail() {
+    if (password !== confirmPassword) {
+      Alert.alert("Error", "Passwords do not match");
+      return;
+    }
     setLoading(true);
     const { error } = await supabase.auth.signUp({
       email,
       password,
-    
     });
     if (error) Alert.alert("Error", error.message);
     setLoading(false);
