@@ -1,16 +1,10 @@
-import { useAuth } from "@/src/providers/AuthProvider";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
-import { Redirect, Tabs } from "expo-router";
+import { Tabs } from "expo-router";
 import React from "react";
 
 const _layout = () => {
-  const { session } = useAuth();
-  if (!session) {
-    return <Redirect href={"/" as any} />;
-  }
-
   return (
     <Tabs
       screenOptions={{
@@ -28,6 +22,7 @@ const _layout = () => {
           shadowColor: "transparent",
         },
       }}
+      // initialRouteName="cart"
     >
       <Tabs.Screen
         name="(home)"

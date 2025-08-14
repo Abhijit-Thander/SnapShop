@@ -1,13 +1,12 @@
 import { useAuth } from "@/src/providers/AuthProvider";
-import { Stack } from "expo-router";
+import { Redirect, Stack } from "expo-router";
 import React from "react";
 
-const _layout = () => {
+const AuthLayout = () => {
   const { session } = useAuth();
-
-  // if (session) {
-  //   return <Redirect href={"/(user)/(menu)"} />;
-  // }
+  if (session) {
+    return <Redirect href={"/" as any} />;
+  }
   return (
     <Stack
       screenOptions={{
@@ -25,4 +24,4 @@ const _layout = () => {
   );
 };
 
-export default _layout;
+export default AuthLayout;
