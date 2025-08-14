@@ -1,5 +1,6 @@
 import CustomButton from "@/src/components/CustomButton";
 import CustomSocialButton from "@/src/components/CustomSocialBtn";
+import { supabase } from "@/src/lib/supabase";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -12,23 +13,27 @@ import {
   View,
 } from "react-native";
 
-const SignUpScreen = () => {
+export default function SignUpScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSignUp = () => {
-    if (password !== confirmPassword) {
-      Alert.alert("Error", "Passwords do not match");
-      return;
-    }
-    Alert.alert("Success", "Account created!");
-    // Sign-up logic here
-  };
+  async function signUpWIthEmail() {
+    setLoading(true);
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    
+    });
+    if (error) Alert.alert("Error", error.message);
+    setLoading(false);
+  }
 
   return (
     <View style={styles.container}>
+      {/* Email */}
       <TextInput
         placeholder="Email"
         keyboardType="email-address"
@@ -37,7 +42,7 @@ const SignUpScreen = () => {
         onChangeText={setEmail}
       />
 
-      {/* Password Field */}
+      {/* Password */}
       <View style={styles.passwordContainer}>
         <TextInput
           placeholder="Password"
@@ -58,7 +63,7 @@ const SignUpScreen = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Confirm Password Field */}
+      {/* Confirm Password */}
       <View style={styles.passwordContainer}>
         <TextInput
           placeholder="Confirm Password"
@@ -79,33 +84,37 @@ const SignUpScreen = () => {
         </TouchableOpacity>
       </View>
 
-      <CustomButton title="Sign Up" onPress={handleSignUp} />
+      {/* Sign Up Button */}
+      <CustomButton
+        title={loading ? "Loading..." : "Sign Up"}
+        onPress={signUpWIthEmail}
+        disabled={loading}
+      />
 
       {/* OR separator */}
       <View style={styles.separatorContainer}>
-        <View style={styles.separator}></View>
+        <View style={styles.separator} />
         <Text style={styles.separateText}>OR</Text>
-        <View style={styles.separator}></View>
+        <View style={styles.separator} />
       </View>
 
-      {/* Social Buttons */}
+      {/* Social Login */}
       <CustomSocialButton
         text="Continue with Google"
         logo={require("../../../assets/images/google-logo.jpg")}
         backgroundColor="#ffffff"
         textColor="#676767"
-        onPress={() => Alert.alert("Google Login")}
+        onPress={() => Alert.alert("Google Login Coming Soon")}
       />
-
       <CustomSocialButton
         text="Continue with Facebook"
         logo={require("../../../assets/images/facebok-logo.jpg")}
         backgroundColor="#ffffff"
         textColor="#676767"
-        onPress={() => Alert.alert("Facebook Login")}
+        onPress={() => Alert.alert("Facebook Login Coming Soon")}
       />
 
-      {/* Sign In Link */}
+      {/* Go to Sign In */}
       <View style={styles.bottomText}>
         <Text style={styles.title}>Already have an account?</Text>
         <Text
@@ -117,9 +126,7 @@ const SignUpScreen = () => {
       </View>
     </View>
   );
-};
-
-export default SignUpScreen;
+}
 
 const styles = StyleSheet.create({
   container: {

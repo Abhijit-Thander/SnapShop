@@ -22,6 +22,7 @@ const _layout = () => {
           shadowColor: "transparent",
         },
       }}
+      // initialRouteName="cart"
     >
       <Tabs.Screen
         name="(home)"

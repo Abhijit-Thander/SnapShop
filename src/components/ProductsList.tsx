@@ -1,20 +1,13 @@
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Link } from "expo-router";
 import React, { memo, useState } from "react";
-import {
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 const ProductsList = memo(({ product }: any) => {
   const [liked, setLiked] = useState(false);
 
   return (
-    <Link href={`/(tabs)/(home)/${product.id}`} asChild>
+    <Link href={`/(user)/(home)/${product.id}`} asChild>
       <Pressable style={styles.container}>
         <View style={styles.imageWrapper}>
           <Image
@@ -22,16 +15,6 @@ const ProductsList = memo(({ product }: any) => {
             style={styles.image}
             resizeMode="cover"
           />
-          {/* <TouchableOpacity
-            onPress={() => setLiked(!liked)}
-            style={styles.heartButton}
-          >
-            <AntDesign
-              name={liked ? "heart" : "hearto"}
-              size={20}
-              color={liked ? "red" : "#949191"}
-            />
-          </TouchableOpacity> */}
         </View>
         <View style={styles.details}>
           <Text style={styles.name} numberOfLines={1}>

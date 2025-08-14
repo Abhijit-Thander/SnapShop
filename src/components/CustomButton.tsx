@@ -14,6 +14,7 @@ type CustomButtonProps = {
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
+  disabled?: boolean;
 };
 
 export default function CustomButton({
@@ -21,6 +22,7 @@ export default function CustomButton({
   onPress,
   style,
   textStyle,
+  disabled,
 }: CustomButtonProps) {
   return (
     <TouchableOpacity

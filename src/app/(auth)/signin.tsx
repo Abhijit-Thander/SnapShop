@@ -1,5 +1,6 @@
 import CustomButton from "@/src/components/CustomButton";
 import CustomSocialButton from "@/src/components/CustomSocialBtn";
+import { supabase } from "@/src/lib/supabase";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -16,6 +17,17 @@ const SignInScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function signInWithEmail() {
+    setIsLoading(true);
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) Alert.alert("Error", error.message);
+    setIsLoading(false);
+  }
 
   return (
     <View style={styles.container}>
@@ -46,7 +58,11 @@ const SignInScreen = () => {
         </TouchableOpacity>
       </View>
 
-      <CustomButton title="Sign In" onPress={() => Alert.alert("Sign In")} />
+      <CustomButton
+        title={isLoading ? "Signing In..." : "Sign In"}
+        onPress={signInWithEmail}
+        disabled={isLoading}
+      />
       <View style={styles.separatorContainer}>
         <View style={styles.separator}></View>
         <Text style={styles.separateText}>OR</Text>
